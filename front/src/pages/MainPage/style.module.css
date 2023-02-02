@@ -1,13 +1,9 @@
-.logo {
-  width: 138px;
-}
-
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  margin-bottom: 40px;
+  margin-bottom: 45px;
 }
 
 .navLink {
@@ -45,5 +41,22 @@
 
   width: 295px;
   margin: 0;
-  margin-bottom: 38px;
+  margin-bottom: 36px;
+}
+
+.logoBottom {
+  padding-top: 26px;
+  margin-bottom: 8px;
+}
+
+.year {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 0.94;
+
+  opacity: 0.25;
+
+  margin: 0;
+  margin-bottom: 40px;
 }

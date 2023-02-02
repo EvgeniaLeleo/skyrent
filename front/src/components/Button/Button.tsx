@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
 import cn from 'classnames'
 
-import styles from './style.module.css'
+import style from './style.module.css'
 
 type Props = {
   children: string | ReactNode
@@ -18,7 +18,7 @@ export const Button: FC<Props> = ({
   type,
   mb,
 }) => {
-  const buttonClassName = cn(styles.button, styles[`${buttonStatus}`])
+  const buttonClassName = cn(style.button, style[`${buttonStatus}`])
 
   return (
     <button
