@@ -1,4 +1,5 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import { ROUTES } from '../../routes'
 import { PageWrapper } from '../PageWrapper/PageWrapper'
@@ -13,11 +14,15 @@ import data from './../../data.json'
 export const ItemPage = () => {
   const itemPk = Number(useParams()?.pk)
   const navigate = useNavigate()
-
   const item = data.find((item) => item.pk === itemPk)
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   if (!item) {
-    return <></>
+    return <PageWrapper>А нет такого места</PageWrapper>
   }
 
   const { country, city, description, price } = item
