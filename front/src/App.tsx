@@ -1,7 +1,11 @@
-import './App.css'
+// import { QueryClient, QueryClientProvider } from 'react-query'
 
-function App() {
-  return <div className="App"></div>
-}
+import { AppRoutes } from './routes'
 
-export default App
+// const queryClient = new QueryClient()
+
+export const App = () => (
+  // <QueryClientProvider client={queryClient}>
+  <AppRoutes />
+  // </QueryClientProvider>
+)
