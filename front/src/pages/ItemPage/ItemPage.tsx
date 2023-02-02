@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { ROUTES } from '../../routes'
 import { PageWrapper } from '../PageWrapper/PageWrapper'
 import { ItemImage } from '../../components/ItemImage/ItemImage'
+import { Footer } from '../../Footer/Footer'
 
 import style from './style.module.css'
 import logo from './assets/logo.svg'
@@ -50,6 +51,8 @@ export const ItemPage = () => {
       <p className={style.price}>$ {price} / month</p>
       <p className={style.description}>{description}</p>
       <ItemImage item={item} />
+
+      <Footer />
     </PageWrapper>
   )
 }

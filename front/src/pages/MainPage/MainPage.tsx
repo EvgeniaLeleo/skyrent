@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import cn from 'classnames'
 
 import { Button } from '../../components/Button/Button'
 import { ItemCard } from '../../components/ItemCard/ItemCard'
 import { ROUTES } from '../../routes'
 import { PageWrapper } from '../PageWrapper/PageWrapper'
+import { Footer } from '../../Footer/Footer'
 
 import data from './../../data.json'
 import style from './style.module.css'
@@ -43,15 +43,7 @@ export const MainPage = () => {
         </Link>
       ))}
 
-      <Link to={ROUTES.main}>
-        <img
-          className={cn(style.logo, style.logoBottom)}
-          src="./assets/images/logoBig.svg"
-          alt="skyrent-logo"
-          height="29px"
-        />
-      </Link>
-      <p className={style.year}>2023</p>
+      <Footer />
     </PageWrapper>
   )
 }
