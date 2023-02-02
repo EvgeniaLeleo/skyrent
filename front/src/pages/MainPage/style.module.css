@@ -44,6 +44,10 @@
   margin-bottom: 36px;
 }
 
+.cardLink {
+  text-decoration: none;
+}
+
 .logoBottom {
   padding-top: 26px;
   margin-bottom: 8px;

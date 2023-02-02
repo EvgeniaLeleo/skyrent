@@ -12,7 +12,7 @@ import style from './style.module.css'
 export const MainPage = () => {
   return (
     <PageWrapper>
-      <div className={style.nav}>
+      <nav className={style.nav}>
         <Link to={ROUTES.main}>
           <img
             className={style.logo}
@@ -24,7 +24,7 @@ export const MainPage = () => {
         <Link to={ROUTES.main} className={style.navLink}>
           <div>О проекте</div>
         </Link>
-      </div>
+      </nav>
       <h1 className={style.title}>Пора переезжать?</h1>
       <h2 className={style.subtitle}>
         Находите места для жизни и работы по всему миру
@@ -34,7 +34,13 @@ export const MainPage = () => {
       </Button>
 
       {data.map((item) => (
-        <ItemCard item={item} key={item.pk} />
+        <Link
+          to={`${ROUTES.item}/${item.pk}`}
+          key={item.pk}
+          className={style.cardLink}
+        >
+          <ItemCard item={item} />
+        </Link>
       ))}
 
       <Link to={ROUTES.main}>

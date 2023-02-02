@@ -1,19 +1,30 @@
-.itemCard {
-  cursor: pointer;
+.nav {
+  display: flex;
+  align-items: center;
 
-  margin-bottom: 42px;
+  margin-bottom: 34px;
+}
+
+.backButton {
+  margin-right: 24px;
+
+  cursor: pointer;
+}
+
+.logo {
+  cursor: pointer;
 }
 
 .location {
   font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 0.94;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.15;
 
   color: #000000;
 
   margin: 0;
-  margin-bottom: 22px;
+  margin-bottom: 17px;
 }
 
 .description {
@@ -27,7 +38,7 @@
   opacity: 0.5;
 
   margin: 0;
-  margin-bottom: 19px;
+  margin-bottom: 28px;
 }
 
 .price {
@@ -39,4 +50,5 @@
   color: #000000;
 
   margin: 0;
+  margin-bottom: 21px;
 }
