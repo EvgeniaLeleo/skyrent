@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { ROUTES } from '../../routes'
 
+import { Button } from '../../components/Button/Button'
+import { ROUTES } from '../../routes'
 import { PageWrapper } from '../PageWrapper/PageWrapper'
 
 import style from './style.module.css'
@@ -20,11 +21,13 @@ export const MainPage = () => {
           <div>О проекте</div>
         </Link>
       </div>
-
       <h1 className={style.title}>Пора переезжать?</h1>
       <h2 className={style.subtitle}>
         Находите места для жизни и работы по всему миру
       </h2>
+      <Button onClick={() => {}} mb="41px">
+        Подобрать недвижимость
+      </Button>
     </PageWrapper>
   )
 }
