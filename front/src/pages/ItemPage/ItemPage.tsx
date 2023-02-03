@@ -55,13 +55,13 @@ export const ItemPage = () => {
       <ul className={style.featuresOnList}>
         {item.features_on.split(', ').map((item, index) => (
           <li className={style.featureOnItem} key={index + item}>
-            <img src={on} alt="" className={style.featureIcon} />
+            <img src={on} alt="" className={style.featureIcon} width="17px" />
             {item}
           </li>
         ))}
         {item.features_off.split(', ').map((item, index) => (
           <li className={style.featureOffItem} key={index + item}>
-            <img src={off} alt="" className={style.featureIcon} />
+            <img src={off} alt="" className={style.featureIcon} width="17px" />
             {item}
           </li>
         ))}
