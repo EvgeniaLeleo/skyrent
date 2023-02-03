@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
-import style from './style.module.css'
-import data from './../../data.json'
 import { Button } from '../Button/Button'
+
+import style from './style.module.css'
+import arrowDown from './assets/arrowDown.svg'
+import data from './../../data.json'
 
 type Props = {}
 
@@ -10,7 +12,8 @@ export const Filter: FC<Props> = () => {
   return (
     <form className={style.filterForm}>
       <button className={style.select} type="button">
-        Страна и город
+        <span>Страна и город</span>
+        <img src={arrowDown} alt="Show list" />
       </button>
       <div className={style.inputsWrapper}>
         <input className={style.filterInput} placeholder="Цена от"></input>

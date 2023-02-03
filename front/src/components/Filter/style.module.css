@@ -15,6 +15,10 @@
 }
 
 .select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   font-family: inherit;
   font-style: normal;
   font-weight: 400;
@@ -32,6 +36,8 @@
   background-color: transparent;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
+
+  cursor: pointer;
 }
 
 .inputsWrapper {
