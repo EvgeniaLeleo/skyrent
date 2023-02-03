@@ -9,7 +9,10 @@ import { Footer } from '../../Footer/Footer'
 import style from './style.module.css'
 import logo from './assets/logo.svg'
 import backButton from './assets/back.svg'
+import on from './assets/on.svg'
+import off from './assets/off.svg'
 import data from './../../data.json'
+import { Button } from '../../components/Button/Button'
 
 export const ItemPage = () => {
   const itemPk = Number(useParams()?.pk)
@@ -55,7 +58,28 @@ export const ItemPage = () => {
       </h3>
       <p className={style.price}>$ {price} / month</p>
       <p className={style.description}>{description}</p>
-      <ItemImage item={item} />
+      <ItemImage item={item} mb="40px" />
+
+      <h4 className={style.featuresTitle}>Что есть внутри?</h4>
+
+      <ul className={style.featuresOnList}>
+        {item.features_on.split(', ').map((item, index) => (
+          <li className={style.featureOnItem} key={index + item}>
+            <img src={on} alt="" className={style.featureIcon} />
+            {item}
+          </li>
+        ))}
+        {item.features_off.split(', ').map((item, index) => (
+          <li className={style.featureOffItem} key={index + item}>
+            <img src={off} alt="" className={style.featureIcon} />
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <Button onClick={() => {}} mb="30px">
+        Показать контактную информацию
+      </Button>
 
       <Footer />
     </PageWrapper>

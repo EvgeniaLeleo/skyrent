@@ -52,3 +52,55 @@
   margin: 0;
   margin-bottom: 21px;
 }
+
+.featuresTitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.18;
+
+  color: #000000;
+
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+.featuresOnList {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.featureOnItem,
+.featureOffItem {
+  display: flex;
+  align-items: center;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.44;
+
+  color: #000000;
+
+  margin-bottom: 10px;
+
+  opacity: 0.75;
+}
+
+.featureOffItem {
+  opacity: 0.3;
+}
+
+.featureOnItem:last-child,
+.featureOffItem:last-child {
+  margin-bottom: 0;
+}
+
+.featureIcon {
+  color: #000000;
+
+  margin-right: 0.5em;
+}

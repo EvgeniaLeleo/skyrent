@@ -14,7 +14,7 @@ export const ItemCard: FC<Props> = ({ item }) => {
 
   return (
     <div className={style.itemCard}>
-      <ItemImage item={item} />
+      <ItemImage item={item} mb="30px" />
 
       <div>
         <h3 className={style.location}>

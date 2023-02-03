@@ -7,9 +7,10 @@ import style from './style.module.css'
 
 type Props = {
   item?: Item
+  mb?: string
 }
 
-export const ItemImage: FC<Props> = ({ item }) => {
+export const ItemImage: FC<Props> = ({ item, mb }) => {
   const [loading, setLoading] = useState<boolean>(true)
 
   if (!item) {
@@ -21,7 +22,7 @@ export const ItemImage: FC<Props> = ({ item }) => {
   const handleLoad = () => setLoading(false)
 
   return (
-    <div className={style.imgWrapper}>
+    <div className={style.imgWrapper} style={{ marginBottom: mb }}>
       {!picture_url && <p>Фото отсутствует</p>}
 
       {picture_url && loading && (
