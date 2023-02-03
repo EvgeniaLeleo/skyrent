@@ -19,6 +19,7 @@ export const NavBack = () => {
         className={style.backButton}
         src={backButton}
         alt="back"
+        width="21px"
         onClick={handleBack}
       />
       <Link to={ROUTES.main}>

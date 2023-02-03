@@ -9,9 +9,10 @@
 
   border: 1px solid #d9d9d9;
   border-radius: 4px;
+}
 
-  overflow: hidden;
-  animation: showFilter 0.1s ease-out;
+.formWrapper {
+  position: relative;
 }
 
 .select {
@@ -28,6 +29,7 @@
 
   color: #000000;
 
+  width: 100%;
   padding: 18px;
   box-sizing: border-box;
 
@@ -38,6 +40,64 @@
   border-radius: 4px;
 
   cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.dropDown {
+  position: absolute;
+  top: 107px;
+  z-index: 1;
+
+  width: calc(100% - 44px);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-left: 22px;
+  box-sizing: border-box;
+
+  background-color: #ffffff;
+
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+
+  animation: showDropdown 0.1s ease-out;
+}
+
+.selectClose {
+  transform: rotate(180deg);
+}
+
+.dropDownItem {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 0.85;
+
+  display: flex;
+  align-items: flex-end;
+
+  color: #000000;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+  opacity: 0.75;
+
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.dropDownItem:last-child {
+  border: none;
+}
+
+.dropDownItem:hover,
+.select:hover {
+  background-color: #f6f6f6;
+}
+
+.dropDownItemText {
+  word-break: break-all;
+
+  padding: 16px 19px;
 }
 
 .inputsWrapper {
