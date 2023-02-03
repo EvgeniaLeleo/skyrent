@@ -14,10 +14,10 @@ import off from './assets/off.svg'
 import data from './../../data.json'
 
 export const ItemPage = () => {
-  const [contactsVisible, setContactsVisible] = useState<boolean>(false)
   const itemPk = Number(useParams()?.pk)
   const item = data.find((item) => item.pk === itemPk)
   const { pathname } = useLocation()
+  const [contactsVisible, setContactsVisible] = useState<boolean>(false)
 
   const handleContactsToggle = () => {
     setContactsVisible((prev) => !prev)

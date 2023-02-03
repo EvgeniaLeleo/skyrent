@@ -5,9 +5,13 @@
 
   padding: 22px 19px 24px;
   margin-bottom: 11px;
+  box-sizing: border-box;
 
   border: 1px solid #d9d9d9;
   border-radius: 4px;
+
+  overflow: hidden;
+  animation: showContacts 0.1s ease-out;
 }
 
 .contactsTitle {
@@ -33,4 +37,13 @@
   color: #000000;
 
   margin: 0;
+}
+
+@keyframes showContacts {
+  from {
+    height: 0;
+  }
+  to {
+    height: 276px;
+  }
 }

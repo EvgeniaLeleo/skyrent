@@ -1,0 +1,72 @@
+.filterForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 28px 22px 30px;
+  margin-bottom: 36px;
+  box-sizing: border-box;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+
+  overflow: hidden;
+  animation: showFilter 0.1s ease-out;
+}
+
+.select {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 0.85;
+  text-align: left;
+
+  color: #000000;
+
+  padding: 18px;
+  box-sizing: border-box;
+
+  opacity: 0.75;
+
+  background-color: transparent;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+
+.inputsWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterInput {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 0.94;
+
+  color: #000000;
+
+  opacity: 0.75;
+
+  width: 46%;
+  padding: 18px;
+  box-sizing: border-box;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+
+.filterInput::placeholder {
+  color: #d9d9d9;
+}
+
+@keyframes showFilter {
+  from {
+    height: 0;
+  }
+  to {
+    height: 260px;
+  }
+}
