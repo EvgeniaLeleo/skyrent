@@ -1,20 +1,3 @@
-.nav {
-  display: flex;
-  align-items: center;
-
-  margin-bottom: 34px;
-}
-
-.backButton {
-  margin-right: 24px;
-
-  cursor: pointer;
-}
-
-.logo {
-  cursor: pointer;
-}
-
 .location {
   font-style: normal;
   font-weight: 500;

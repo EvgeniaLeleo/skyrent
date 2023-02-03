@@ -1,63 +1,53 @@
-import { useEffect } from 'react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
 
-import { ROUTES } from '../../routes'
 import { PageWrapper } from '../PageWrapper/PageWrapper'
 import { ItemImage } from '../../components/ItemImage/ItemImage'
-import { Footer } from '../../Footer/Footer'
+import { Footer } from '../../components/Footer/Footer'
+import { Button } from '../../components/Button/Button'
+import { NavBack } from '../../components/NavBack/NavBack'
+import { ItemContacts } from '../../components/ItemContacts/ItemContacts'
 
 import style from './style.module.css'
-import logo from './assets/logo.svg'
-import backButton from './assets/back.svg'
 import on from './assets/on.svg'
 import off from './assets/off.svg'
 import data from './../../data.json'
-import { Button } from '../../components/Button/Button'
 
 export const ItemPage = () => {
+  const [contactsVisible, setContactsVisible] = useState<boolean>(false)
   const itemPk = Number(useParams()?.pk)
-  const navigate = useNavigate()
   const item = data.find((item) => item.pk === itemPk)
   const { pathname } = useLocation()
+
+  const handleContactsToggle = () => {
+    setContactsVisible((prev) => !prev)
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
 
   if (!item) {
-    return <PageWrapper>А нет такого места</PageWrapper>
+    return (
+      <PageWrapper>
+        <NavBack />
+        <p>Такой локации еще нет!</p>
+      </PageWrapper>
+    )
   }
 
   const { country, city, description, price } = item
 
-  const handleBack = () => {
-    navigate(-1)
-  }
-
   return (
     <PageWrapper>
-      <nav className={style.nav}>
-        <img
-          className={style.backButton}
-          src={backButton}
-          alt="back"
-          onClick={handleBack}
-        />
-        <Link to={ROUTES.main}>
-          <img
-            className={style.logo}
-            src={logo}
-            alt="skyrent-logo"
-            height="27px"
-          />
-        </Link>
-      </nav>
+      <NavBack />
 
       <h3 className={style.location}>
         {country} → {city}
       </h3>
       <p className={style.price}>$ {price} / month</p>
       <p className={style.description}>{description}</p>
+
       <ItemImage item={item} mb="40px" />
 
       <h4 className={style.featuresTitle}>Что есть внутри?</h4>
@@ -77,9 +67,13 @@ export const ItemPage = () => {
         ))}
       </ul>
 
-      <Button onClick={() => {}} mb="30px">
-        Показать контактную информацию
-      </Button>
+      {!contactsVisible && (
+        <Button onClick={handleContactsToggle} mb="30px">
+          Показать контактную информацию
+        </Button>
+      )}
+
+      {contactsVisible && <ItemContacts item={item} />}
 
       <Footer />
     </PageWrapper>

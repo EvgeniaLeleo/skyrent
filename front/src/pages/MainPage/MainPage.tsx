@@ -4,7 +4,7 @@ import { Button } from '../../components/Button/Button'
 import { ItemCard } from '../../components/ItemCard/ItemCard'
 import { ROUTES } from '../../routes'
 import { PageWrapper } from '../PageWrapper/PageWrapper'
-import { Footer } from '../../Footer/Footer'
+import { Footer } from '../../components/Footer/Footer'
 
 import data from './../../data.json'
 import style from './style.module.css'
@@ -15,7 +15,6 @@ export const MainPage = () => {
       <nav className={style.nav}>
         <Link to={ROUTES.main}>
           <img
-            className={style.logo}
             src="./assets/images/logo.svg"
             alt="skyrent-logo"
             height="27px"
@@ -47,5 +46,3 @@ export const MainPage = () => {
     </PageWrapper>
   )
 }
-
-// TODO .logo не требуется?

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import cn from 'classnames'
 
-import { ROUTES } from '../routes'
+import { ROUTES } from '../../routes'
 
 import style from './style.module.css'
 import logoBig from './assets/logoBig.svg'
@@ -11,7 +10,7 @@ export const Footer = () => {
     <>
       <Link to={ROUTES.main}>
         <img
-          className={cn(style.logo, style.logoBottom)}
+          className={style.logoBottom}
           src={logoBig}
           alt="skyrent-logo"
           height="29px"
@@ -21,5 +20,3 @@ export const Footer = () => {
     </>
   )
 }
-
-// TODO .logo не требуется?
