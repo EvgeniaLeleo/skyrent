@@ -22,7 +22,6 @@ export const Filter = () => {
   const handleSelectLocation = (location: string) => {
     setSelectedLocation(location)
     setMenuVisible((prev) => !prev)
-    window.scrollTo(0, 250)
   }
 
   const handleMinPriceChange = (e: { target: { value: string } }) => {
