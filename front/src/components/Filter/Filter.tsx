@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Button } from '../Button/Button'
-import { sortLocations } from '../../utils/getUniqueLocations'
+import { sortLocations } from '../../utils/sortLocations'
 
 import style from './style.module.css'
 import arrowDown from './assets/arrowDown.svg'
