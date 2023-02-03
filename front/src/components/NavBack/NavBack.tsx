@@ -22,7 +22,7 @@ export const NavBack = () => {
         width="21px"
         onClick={handleBack}
       />
-      <Link to={ROUTES.main}>
+      <Link to={ROUTES.main} className={style.navLinkLogo}>
         <img
           className={style.logo}
           src={logo}

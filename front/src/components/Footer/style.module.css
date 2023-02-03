@@ -1,6 +1,9 @@
 .logoBottom {
-  padding-top: 26px;
-  margin-bottom: 8px;
+  padding-top: 27px;
+  margin-right: auto;
+  margin-bottom: 12px;
+
+  cursor: pointer;
 }
 
 .year {
