@@ -1,19 +1,21 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 
 import { Button } from '../Button/Button'
 import { sortLocations } from '../../utils/sortLocations'
+import { Item } from '../../types'
 
 import style from './style.module.css'
 import arrowDown from './assets/arrowDown.svg'
-import data from './../../data.json'
 
-const uniqueLocations = [...new Set(sortLocations(data))]
+type Props = { data?: Item[] }
 
-export const Filter = () => {
+export const Filter: FC<Props> = ({ data }) => {
   const [menuVisible, setMenuVisible] = useState<boolean>(false)
   const [minPrice, setMinPrice] = useState('')
   const [maxPrice, setMaxPrice] = useState('')
   const [selectedLocation, setSelectedLocation] = useState('')
+
+  const uniqueLocations = data ? [...new Set(sortLocations(data))] : []
 
   const handleContactsToggle = () => {
     setMenuVisible((prev) => !prev)

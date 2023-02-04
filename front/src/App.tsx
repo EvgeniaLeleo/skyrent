@@ -1,11 +1,11 @@
-// import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 import { AppRoutes } from './routes'
 
-// const queryClient = new QueryClient()
+const queryClient = new QueryClient()
 
 export const App = () => (
-  // <QueryClientProvider client={queryClient}>
-  <AppRoutes />
-  // </QueryClientProvider>
+  <QueryClientProvider client={queryClient}>
+    <AppRoutes />
+  </QueryClientProvider>
 )
