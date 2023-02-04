@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
+import { useQuery } from 'react-query'
 
 import { PageWrapper } from '../PageWrapper/PageWrapper'
 import { ItemImage } from '../../components/ItemImage/ItemImage'
@@ -7,25 +8,54 @@ import { Footer } from '../../components/Footer/Footer'
 import { Button } from '../../components/Button/Button'
 import { NavBack } from '../../components/NavBack/NavBack'
 import { ItemContacts } from '../../components/ItemContacts/ItemContacts'
+import { URL_API } from '../../constants'
+import { Item } from '../../types'
 
 import style from './style.module.css'
 import on from './../../assets/on.svg'
 import off from './../../assets/off.svg'
-import data from './../../data.json'
 
 export const ItemPage = () => {
   const itemPk = Number(useParams()?.pk)
-  const item = data.find((item) => item.pk === itemPk)
+
+  const { isLoading, isError, data } = useQuery<Item>('itemData', () =>
+    fetch(`${URL_API}/${itemPk}`).then((response) => response.json())
+  )
+
   const { pathname } = useLocation()
   const [contactsVisible, setContactsVisible] = useState<boolean>(false)
-
-  const handleContactsToggle = () => {
-    setContactsVisible((prev) => !prev)
-  }
+  const [item, setItem] = useState<Item>()
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
+
+  useEffect(() => {
+    if (data) {
+      setItem(data)
+      return
+    }
+  }, [data])
+
+  if (isLoading) {
+    return (
+      <PageWrapper>
+        <NavBack />
+        <p className={style.message}>Загрузка данных...</p>
+      </PageWrapper>
+    )
+  }
+
+  if (isError) {
+    return (
+      <PageWrapper>
+        <NavBack />
+        <p className={style.message}>
+          Не удалось загрузить данные: возможно, такой локации еще нет
+        </p>
+      </PageWrapper>
+    )
+  }
 
   if (!item) {
     return (
@@ -37,6 +67,10 @@ export const ItemPage = () => {
   }
 
   const { country, city, description, price } = item
+
+  const handleContactsToggle = () => {
+    setContactsVisible((prev) => !prev)
+  }
 
   return (
     <PageWrapper>

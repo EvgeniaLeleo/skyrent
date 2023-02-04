@@ -3,11 +3,11 @@ import { useQuery } from 'react-query'
 
 import { Button } from '../Button/Button'
 import { sortLocations } from '../../utils/sortLocations'
+import { URL_API } from '../../constants'
 import { Item } from '../../types'
 
 import style from './style.module.css'
 import arrowDown from './../../assets/arrowDown.svg'
-import { URL_API } from '../../constants'
 
 type Props = {
   setItems: Function
@@ -34,11 +34,13 @@ export const Filter: FC<Props> = ({ data, setItems, setLoading, setError }) => {
   }
 
   const handleMinPriceChange = (e: { target: { value: string } }) => {
-    if (/^\d*$/.test(e.target.value)) setMinPrice(e.target.value)
+    if (/^\d*$/.test(e.target.value))
+      setMinPrice(Number(e.target.value).toString())
   }
 
   const handleMaxPriceChange = (e: { target: { value: string } }) => {
-    if (/^\d*$/.test(e.target.value)) setMaxPrice(e.target.value)
+    if (/^\d*$/.test(e.target.value))
+      setMaxPrice(Number(e.target.value).toString())
   }
 
   const handleSearch = (e: { preventDefault: () => void }) => {
@@ -69,8 +71,8 @@ export const Filter: FC<Props> = ({ data, setItems, setLoading, setError }) => {
   )
 
   useEffect(() => {
-    if (filteredData?.length) {
-      setItems(filteredData)
+    if (filteredData) {
+      filteredData.length ? setItems(filteredData) : setItems([])
       return
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

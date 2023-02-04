@@ -6,16 +6,12 @@ import { Item } from '../../types'
 import style from './style.module.css'
 
 type Props = {
-  item?: Item
+  item: Item
   mb?: string
 }
 
 export const ItemImage: FC<Props> = ({ item, mb }) => {
   const [loading, setLoading] = useState<boolean>(true)
-
-  if (!item) {
-    return <p>Фото отсутствует</p>
-  }
 
   const { picture_url, title } = item
 

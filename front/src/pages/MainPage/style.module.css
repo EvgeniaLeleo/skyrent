@@ -1,3 +1,7 @@
+.contentWrapper {
+  position: relative;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
