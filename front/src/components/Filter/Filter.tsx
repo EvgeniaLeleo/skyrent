@@ -5,7 +5,7 @@ import { sortLocations } from '../../utils/sortLocations'
 import { Item } from '../../types'
 
 import style from './style.module.css'
-import arrowDown from './assets/arrowDown.svg'
+import arrowDown from './../../assets/arrowDown.svg'
 
 type Props = { data?: Item[] }
 

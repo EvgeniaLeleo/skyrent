@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../routes'
 
 import style from './style.module.css'
-import logo from './assets/logo.svg'
-import backButton from './assets/back.svg'
+import logo from './../../assets/logo.svg'
+import backButton from './../../assets/back.svg'
 
 export const NavBack = () => {
   const navigate = useNavigate()

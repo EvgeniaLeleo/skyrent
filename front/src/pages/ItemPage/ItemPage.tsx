@@ -9,8 +9,8 @@ import { NavBack } from '../../components/NavBack/NavBack'
 import { ItemContacts } from '../../components/ItemContacts/ItemContacts'
 
 import style from './style.module.css'
-import on from './assets/on.svg'
-import off from './assets/off.svg'
+import on from './../../assets/on.svg'
+import off from './../../assets/off.svg'
 import data from './../../data.json'
 
 export const ItemPage = () => {

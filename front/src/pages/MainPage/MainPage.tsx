@@ -8,11 +8,12 @@ import { ROUTES } from '../../routes'
 import { PageWrapper } from '../PageWrapper/PageWrapper'
 import { Footer } from '../../components/Footer/Footer'
 import { Filter } from '../../components/Filter/Filter'
+import { Item } from '../../types'
+import { URL_API } from '../../constants'
 
 // import dataLocal from './../../data.json'
 import style from './style.module.css'
-import { Item } from '../../types'
-import { URL_API } from '../../constants'
+import logo from './../../assets/logo.svg'
 
 export const MainPage = () => {
   const { isLoading, isError, data } = useQuery<Item[]>('itemsData', () =>
@@ -37,13 +38,9 @@ export const MainPage = () => {
     <PageWrapper>
       <nav className={style.nav}>
         <Link to={ROUTES.main}>
-          <img
-            src="./assets/images/logo.svg"
-            alt="skyrent-logo"
-            height="27px"
-          />
+          <img src={logo} alt="skyrent-logo" height="27px" />
         </Link>
-        <Link to={ROUTES.main} className={style.navLink}>
+        <Link to={ROUTES.about} className={style.navLink}>
           <div>О проекте</div>
         </Link>
       </nav>

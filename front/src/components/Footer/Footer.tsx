@@ -1,9 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '../../routes'
 
 import style from './style.module.css'
-import logoBig from './assets/logoBig.svg'
+import logoBig from './../../assets/logoBig.svg'
 
 export const Footer = () => {
   const navigate = useNavigate()
