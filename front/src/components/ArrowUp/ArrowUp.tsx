@@ -11,8 +11,15 @@ export const ArrowUp = () => {
   }
 
   return (
-    <div className={style.arrowWrapper} onClick={handleScrollUp}>
-      <img className={style.arrow} src={arrow} alt="Scroll up" height="29px" />
+    <div className={style.arrowWrapper}>
+      <div className={style.arrowBackground} onClick={handleScrollUp}>
+        <img
+          className={style.arrow}
+          src={arrow}
+          alt="Scroll up"
+          height="29px"
+        />
+      </div>
     </div>
   )
 }

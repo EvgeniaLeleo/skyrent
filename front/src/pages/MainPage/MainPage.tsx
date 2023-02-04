@@ -108,9 +108,10 @@ export const MainPage = () => {
             </Link>
           ))}
 
-        <Footer />
-
+        <div className={style.emptyDiv}></div>
         {arrowVisible && <ArrowUp />}
+
+        <Footer />
       </div>
     </PageWrapper>
   )

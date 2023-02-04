@@ -102,7 +102,7 @@ export const ItemPage = () => {
       </ul>
 
       {!contactsVisible && (
-        <Button onClick={handleContactsToggle} mb="30px">
+        <Button onClick={handleContactsToggle} mb="57px">
           Показать контактную информацию
         </Button>
       )}
