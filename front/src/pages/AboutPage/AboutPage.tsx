@@ -16,7 +16,7 @@ export const AboutPage = () => {
         фильтровать и просматривать контакты арендатора.
       </p>
 
-      <h4 className={style.collaborators}>Над проектом работали:</h4>
+      <h4 className={style.collaboratorsTitle}>Над проектом работали:</h4>
 
       <ul className={style.collaboratorsList}>
         <li className={style.collaborator}>

@@ -6,7 +6,8 @@
   margin-bottom: 45px;
 }
 
-.navLink {
+.navLink,
+.navLink:active {
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -14,6 +15,12 @@
 
   color: #727883;
   text-decoration: none;
+
+  transition: color 0.1s;
+}
+
+.navLink:hover {
+  color: #000000;
 }
 
 .title {
