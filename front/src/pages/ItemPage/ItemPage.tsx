@@ -31,7 +31,7 @@ export const ItemPage = () => {
     return (
       <PageWrapper>
         <NavBack />
-        <p>Такой локации еще нет!</p>
+        <p className={style.message}>Такой локации еще нет!</p>
       </PageWrapper>
     )
   }

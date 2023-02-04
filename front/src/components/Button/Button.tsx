@@ -5,7 +5,7 @@ import style from './style.module.css'
 
 type Props = {
   children: string | ReactNode
-  onClick: VoidFunction
+  onClick?: VoidFunction
   buttonStatus?: 'normal' | 'disabled'
   type?: 'button' | 'submit'
   mb?: string

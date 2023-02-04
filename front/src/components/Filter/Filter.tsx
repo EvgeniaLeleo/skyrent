@@ -1,4 +1,5 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
+import { useQuery } from 'react-query'
 
 import { Button } from '../Button/Button'
 import { sortLocations } from '../../utils/sortLocations'
@@ -6,14 +7,20 @@ import { Item } from '../../types'
 
 import style from './style.module.css'
 import arrowDown from './../../assets/arrowDown.svg'
+import { URL_API } from '../../constants'
 
-type Props = { data?: Item[] }
+type Props = {
+  setItems: Function
+  setLoading: Function
+  setError: Function
+  data?: Item[]
+}
 
-export const Filter: FC<Props> = ({ data }) => {
+export const Filter: FC<Props> = ({ data, setItems, setLoading, setError }) => {
   const [menuVisible, setMenuVisible] = useState<boolean>(false)
-  const [minPrice, setMinPrice] = useState('')
-  const [maxPrice, setMaxPrice] = useState('')
-  const [selectedLocation, setSelectedLocation] = useState('')
+  const [minPrice, setMinPrice] = useState<string>('')
+  const [maxPrice, setMaxPrice] = useState<string>('')
+  const [selectedLocation, setSelectedLocation] = useState<string>('')
 
   const uniqueLocations = data ? [...new Set(sortLocations(data))] : []
 
@@ -35,8 +42,45 @@ export const Filter: FC<Props> = ({ data }) => {
   }
 
   const handleSearch = (e: { preventDefault: () => void }) => {
+    refetch()
     e.preventDefault()
   }
+
+  const {
+    data: filteredData,
+    isLoading,
+    isError,
+    refetch,
+    isFetching,
+  } = useQuery<Item[]>(
+    'filteredItemsData',
+    async () => {
+      const city = selectedLocation.split(' → ')[1] || ''
+
+      return fetch(
+        `${URL_API}?${new URLSearchParams({
+          city: city,
+          from: minPrice,
+          to: maxPrice,
+        })}`
+      ).then((response) => response.json())
+    },
+    { enabled: false }
+  )
+
+  useEffect(() => {
+    if (filteredData?.length) {
+      setItems(filteredData)
+      return
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredData])
+
+  useEffect(() => {
+    isLoading || isFetching ? setLoading(true) : setLoading(false)
+    isError ? setError(true) : setError(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading, isError, isFetching])
 
   return (
     <div className={style.formWrapper}>
@@ -69,8 +113,11 @@ export const Filter: FC<Props> = ({ data }) => {
           />
         </div>
 
-        <Button onClick={() => {}} type="submit">
-          Подобрать
+        <Button
+          type="submit"
+          buttonStatus={isLoading || isFetching ? 'disabled' : 'normal'}
+        >
+          {isLoading || isFetching ? 'Выполняем поиск ...' : 'Подобрать'}
         </Button>
       </form>
 

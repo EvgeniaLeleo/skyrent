@@ -54,3 +54,14 @@
 .cardLink {
   text-decoration: none;
 }
+
+.message {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.14;
+
+  color: #000000;
+
+  opacity: 0.75;
+}

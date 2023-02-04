@@ -11,21 +11,23 @@ import { Filter } from '../../components/Filter/Filter'
 import { Item } from '../../types'
 import { URL_API } from '../../constants'
 
-// import dataLocal from './../../data.json'
 import style from './style.module.css'
 import logo from './../../assets/logo.svg'
 
 export const MainPage = () => {
+  const [items, setItems] = useState<Item[]>([])
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [filterVisible, setFilterVisible] = useState<boolean>(false)
+
   const { isLoading, isError, data } = useQuery<Item[]>('itemsData', () =>
     fetch(URL_API).then((response) => response.json())
   )
 
-  const [items, setItems] = useState<Item[]>([])
-  const [filterVisible, setFilterVisible] = useState<boolean>(false)
-
-  const handleFilterToggle = () => {
-    setFilterVisible((prev) => !prev)
-  }
+  useEffect(() => {
+    isLoading ? setLoading(true) : setLoading(false)
+    isError ? setError(true) : setError(false)
+  }, [isLoading, isError])
 
   useEffect(() => {
     if (data?.length) {
@@ -33,6 +35,10 @@ export const MainPage = () => {
       return
     }
   }, [data])
+
+  const handleFilterToggle = () => {
+    setFilterVisible((prev) => !prev)
+  }
 
   return (
     <PageWrapper>
@@ -53,27 +59,40 @@ export const MainPage = () => {
         <Button
           onClick={handleFilterToggle}
           mb="41px"
-          buttonStatus={isLoading || isError ? 'disabled' : 'normal'}
+          buttonStatus={loading || error ? 'disabled' : 'normal'}
         >
           Подобрать недвижимость
         </Button>
       )}
 
-      {filterVisible && <Filter data={data} />}
+      {filterVisible && (
+        <Filter
+          data={data}
+          setItems={setItems}
+          setError={setError}
+          setLoading={setLoading}
+        />
+      )}
 
-      {isLoading && <p>Загрузка данных...</p>}
+      {loading && <p className={style.message}>Загрузка данных...</p>}
 
-      {isError && <p>Произошла ошибка, не удалось загрузить данные!</p>}
+      {!loading && error && (
+        <p className={style.message}>
+          Произошла ошибка, не удалось загрузить данные!
+        </p>
+      )}
 
-      {items.map((item) => (
-        <Link
-          to={`${ROUTES.item}/${item.pk}`}
-          key={item.pk}
-          className={style.cardLink}
-        >
-          <ItemCard item={item} />
-        </Link>
-      ))}
+      {!loading &&
+        !error &&
+        items.map((item) => (
+          <Link
+            to={`${ROUTES.item}/${item.pk}`}
+            key={item.pk}
+            className={style.cardLink}
+          >
+            <ItemCard item={item} />
+          </Link>
+        ))}
 
       <Footer />
     </PageWrapper>
