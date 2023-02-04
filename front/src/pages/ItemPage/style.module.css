@@ -10,7 +10,10 @@
   margin-bottom: 17px;
 }
 
-.description {
+.description,
+.descriptionHidden {
+  position: relative;
+
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -22,6 +25,31 @@
 
   margin: 0;
   margin-bottom: 28px;
+}
+
+.descriptionHidden {
+  word-break: break-word;
+
+  display: -webkit-inline-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+.showMore {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  background-color: #ffffff;
+}
+
+.showMoreText {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .price {

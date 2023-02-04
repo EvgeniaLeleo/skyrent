@@ -24,6 +24,7 @@ export const ItemPage = () => {
 
   const { pathname } = useLocation()
   const [contactsVisible, setContactsVisible] = useState<boolean>(false)
+  const [showMore, setShowMore] = useState<boolean>(false)
   const [item, setItem] = useState<Item>()
 
   useEffect(() => {
@@ -68,6 +69,10 @@ export const ItemPage = () => {
 
   const { country, city, description, price } = item
 
+  const handleDescriptionToggle = () => {
+    setShowMore((prev) => !prev)
+  }
+
   const handleContactsToggle = () => {
     setContactsVisible((prev) => !prev)
   }
@@ -80,7 +85,15 @@ export const ItemPage = () => {
         {country} → {city}
       </h3>
       <p className={style.price}>$ {price} / month</p>
-      <p className={style.description}>{description}</p>
+      <p className={showMore ? style.description : style.descriptionHidden}>
+        {description}
+        {!showMore && (
+          <span className={style.showMore} onClick={handleDescriptionToggle}>
+            <span className={style.ellipsis}>...</span>
+            <span className={style.showMoreText}>more</span>
+          </span>
+        )}
+      </p>
 
       <ItemImage item={item} mb="40px" />
 
