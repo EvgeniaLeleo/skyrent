@@ -23,8 +23,8 @@ export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
   const sessionMaxPrice = sessionStorage.getItem('maxPrice')
 
   const [menuVisible, setMenuVisible] = useState<boolean>(false)
-  const [minPrice, setMinPrice] = useState<string>('')
-  const [maxPrice, setMaxPrice] = useState<string>('')
+  const [minPrice, setMinPrice] = useState<string>(sessionMinPrice || '')
+  const [maxPrice, setMaxPrice] = useState<string>(sessionMaxPrice || '')
   const [selectedLocation, setSelectedLocation] = useState<string>(
     sessionLocation || ''
   )
