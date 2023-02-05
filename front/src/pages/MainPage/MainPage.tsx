@@ -16,33 +16,77 @@ import style from './style.module.css'
 import logo from './../../assets/logo.svg'
 
 export const MainPage = () => {
+  const sessionLocation = sessionStorage.getItem('location')
+  const sessionMinPrice = sessionStorage.getItem('minPrice')
+  const sessionMaxPrice = sessionStorage.getItem('maxPrice')
+
   const [items, setItems] = useState<Item[]>([])
   const [error, setError] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
   const [arrowVisible, setArrowVisible] = useState<boolean>(false)
-  const [filterVisible, setFilterVisible] = useState<boolean>(false)
+  const [filterVisible, setFilterVisible] = useState<boolean>(
+    !!(sessionLocation || sessionMaxPrice || sessionMinPrice)
+  )
 
+  // This query is necessary to load data for the filter drop menu
   const { isLoading, isError, data } = useQuery<Item[]>('itemsData', () =>
     fetch(URL_API).then((response) => response.json())
   )
+
+  const {
+    data: filteredData,
+    isLoading: isLoadingFiltered,
+    isError: isErrorFiltered,
+    refetch: refetchFiltered,
+    isFetching: isFetchingFiltered,
+  } = useQuery<Item[]>(
+    `filteredItemsData${sessionLocation}Min${sessionMinPrice}Max${sessionMaxPrice}`,
+    async () => {
+      return fetch(
+        `${URL_API}?${new URLSearchParams({
+          city: sessionLocation?.split(' → ')[1] || '',
+          from: sessionMinPrice || '',
+          to: sessionMaxPrice || '',
+        })}`
+      ).then((response) => response.json())
+    },
+    { enabled: false }
+  )
+
+  useEffect(() => {
+    if (sessionLocation || sessionMaxPrice || sessionMinPrice) {
+      refetchFiltered()
+      if (filteredData?.length) {
+        setItems(filteredData)
+        return
+      }
+    }
+
+    if (data?.length) {
+      setItems(data)
+      return
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, filteredData])
+
+  useEffect(() => {
+    isLoading || isLoadingFiltered || isFetchingFiltered
+      ? setLoading(true)
+      : setLoading(false)
+    isError || isErrorFiltered ? setError(true) : setError(false)
+  }, [
+    isLoading,
+    isLoadingFiltered,
+    isFetchingFiltered,
+    isError,
+    isErrorFiltered,
+  ])
 
   useEffect(() => {
     window.onscroll = function () {
       window.scrollY > 650 ? setArrowVisible(true) : setArrowVisible(false)
     }
   }, [])
-
-  useEffect(() => {
-    isLoading ? setLoading(true) : setLoading(false)
-    isError ? setError(true) : setError(false)
-  }, [isLoading, isError])
-
-  useEffect(() => {
-    if (data?.length) {
-      setItems(data)
-      return
-    }
-  }, [data])
 
   const handleFilterToggle = () => {
     setFilterVisible((prev) => !prev)

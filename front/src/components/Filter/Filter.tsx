@@ -76,13 +76,11 @@ export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
     refetch,
     isFetching,
   } = useQuery<Item[]>(
-    'filteredItemsData',
+    `filteredItemsData${selectedLocation}Min${minPrice}Max${maxPrice}`,
     async () => {
-      const city = selectedLocation.split(' → ')[1] || ''
-
       return fetch(
         `${URL_API}?${new URLSearchParams({
-          city: city,
+          city: selectedLocation.split(' → ')[1] || '',
           from: minPrice,
           to: maxPrice,
         })}`
