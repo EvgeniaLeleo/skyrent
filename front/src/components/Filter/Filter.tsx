@@ -28,9 +28,6 @@ export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
   const [selectedLocation, setSelectedLocation] = useState<string>(
     sessionLocation || ''
   )
-  const [isSelectedLocation, setIsSelectedLocation] = useState<boolean>(
-    !!sessionLocation
-  )
 
   const uniqueLocations = data?.length ? [...new Set(sortLocations(data))] : []
 
@@ -39,9 +36,11 @@ export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
   }
 
   const handleSelectLocation = (location: string) => {
-    setIsSelectedLocation((prev) => !prev)
-    setSelectedLocation(isSelectedLocation ? '' : location)
-    sessionStorage.setItem('location', isSelectedLocation ? '' : location)
+    setSelectedLocation(location === selectedLocation ? '' : location)
+    sessionStorage.setItem(
+      'location',
+      location === selectedLocation ? '' : location
+    )
     setMenuVisible((prev) => !prev)
   }
 
