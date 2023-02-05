@@ -16,9 +16,9 @@ import on from './../../assets/on.svg'
 import off from './../../assets/off.svg'
 
 export const ItemPage = () => {
-  const itemPk = Number(useParams()?.pk)
+  const itemPk = useParams()?.pk || ''
 
-  const { isLoading, isError, data } = useQuery<Item>('itemData', () =>
+  const { isLoading, isError, data } = useQuery<Item>(itemPk, () =>
     fetch(`${URL_API}/${itemPk}`).then((response) => response.json())
   )
 
