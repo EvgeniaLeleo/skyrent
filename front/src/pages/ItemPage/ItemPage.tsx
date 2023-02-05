@@ -89,7 +89,7 @@ export const ItemPage = () => {
         {description}
         {!showMore && (
           <span className={style.showMore} onClick={handleDescriptionToggle}>
-            <span className={style.ellipsis}>...</span>
+            <span className={style.ellipsis}>... </span>
             <span className={style.showMoreText}>more</span>
           </span>
         )}

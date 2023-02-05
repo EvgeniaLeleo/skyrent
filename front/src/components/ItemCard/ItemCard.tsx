@@ -21,7 +21,7 @@ export const ItemCard: FC<Props> = ({ item }) => {
           {country} → {city}
         </h3>
 
-        <span className={style.description}>{description}</span>
+        <p className={style.description}>{description}</p>
         <p className={style.price}>$ {price} / month</p>
       </div>
     </div>
