@@ -56,10 +56,8 @@ export const MainPage = () => {
   useEffect(() => {
     if (sessionLocation || sessionMaxPrice || sessionMinPrice) {
       refetchFiltered()
-      if (filteredData?.length) {
-        setItems(filteredData)
-        return
-      }
+      filteredData?.length ? setItems(filteredData) : setItems([])
+      return
     }
 
     if (data?.length) {
