@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
+import cn from 'classnames'
 
 import { Button } from '../Button/Button'
 import { sortLocations } from '../../utils/sortLocations'
@@ -17,10 +18,19 @@ type Props = {
 }
 
 export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
+  const sessionLocation = sessionStorage.getItem('location')
+  const sessionMinPrice = sessionStorage.getItem('minPrice')
+  const sessionMaxPrice = sessionStorage.getItem('maxPrice')
+
   const [menuVisible, setMenuVisible] = useState<boolean>(false)
   const [minPrice, setMinPrice] = useState<string>('')
   const [maxPrice, setMaxPrice] = useState<string>('')
-  const [selectedLocation, setSelectedLocation] = useState<string>('')
+  const [selectedLocation, setSelectedLocation] = useState<string>(
+    sessionLocation || ''
+  )
+  const [isSelectedLocation, setIsSelectedLocation] = useState<boolean>(
+    !!sessionLocation
+  )
 
   const uniqueLocations = data?.length ? [...new Set(sortLocations(data))] : []
 
@@ -29,18 +39,30 @@ export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
   }
 
   const handleSelectLocation = (location: string) => {
-    setSelectedLocation(location)
+    setIsSelectedLocation((prev) => !prev)
+    setSelectedLocation(isSelectedLocation ? '' : location)
+    sessionStorage.setItem('location', isSelectedLocation ? '' : location)
     setMenuVisible((prev) => !prev)
   }
 
   const handleMinPriceChange = (e: { target: { value: string } }) => {
-    if (/^\d*$/.test(e.target.value))
-      setMinPrice(Number(e.target.value).toString())
+    if (/^\d*$/.test(e.target.value)) {
+      const currentMinPrice = !e.target.value
+        ? ''
+        : Number(e.target.value).toString()
+      setMinPrice(currentMinPrice)
+      sessionStorage.setItem('minPrice', currentMinPrice)
+    }
   }
 
   const handleMaxPriceChange = (e: { target: { value: string } }) => {
-    if (/^\d*$/.test(e.target.value))
-      setMaxPrice(Number(e.target.value).toString())
+    if (/^\d*$/.test(e.target.value)) {
+      const currentMaxPrice = !e.target.value
+        ? ''
+        : Number(e.target.value).toString()
+      setMaxPrice(currentMaxPrice)
+      sessionStorage.setItem('maxPrice', currentMaxPrice)
+    }
   }
 
   const handleSearch = (e: { preventDefault: () => void }) => {
@@ -83,6 +105,13 @@ export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
     isError ? setError(true) : setError(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, isError, isFetching])
+
+  useEffect(() => {
+    if (sessionLocation) setSelectedLocation(sessionLocation)
+    if (sessionMinPrice) setMinPrice(sessionMinPrice)
+    if (sessionMaxPrice) setMaxPrice(sessionMaxPrice)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className={style.formWrapper}>
@@ -136,7 +165,9 @@ export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
             return (
               <div
                 onClick={() => handleSelectLocation(location)}
-                className={style.dropDownItem}
+                className={cn(style.dropDownItem, {
+                  [style.dropDownItemSelected]: location === selectedLocation,
+                })}
                 key={location + index}
               >
                 <span className={style.dropDownItemText}>{location}</span>
