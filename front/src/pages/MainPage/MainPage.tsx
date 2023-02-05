@@ -28,7 +28,7 @@ export const MainPage = () => {
 
   useEffect(() => {
     window.onscroll = function () {
-      window.scrollY > 550 ? setArrowVisible(true) : setArrowVisible(false)
+      window.scrollY > 650 ? setArrowVisible(true) : setArrowVisible(false)
     }
   }, [])
 
@@ -46,6 +46,13 @@ export const MainPage = () => {
 
   const handleFilterToggle = () => {
     setFilterVisible((prev) => !prev)
+  }
+
+  const filterProps = {
+    data,
+    setItems,
+    setError,
+    setLoading,
   }
 
   return (
@@ -74,14 +81,7 @@ export const MainPage = () => {
           </Button>
         )}
 
-        {filterVisible && (
-          <Filter
-            data={data}
-            setItems={setItems}
-            setError={setError}
-            setLoading={setLoading}
-          />
-        )}
+        {filterVisible && <Filter {...filterProps} />}
 
         {loading && <p className={style.message}>Загрузка данных...</p>}
 

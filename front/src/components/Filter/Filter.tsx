@@ -10,19 +10,19 @@ import style from './style.module.css'
 import arrowDown from './../../assets/arrowDown.svg'
 
 type Props = {
+  data?: Item[]
   setItems: Function
   setLoading: Function
   setError: Function
-  data?: Item[]
 }
 
-export const Filter: FC<Props> = ({ data, setItems, setLoading, setError }) => {
+export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
   const [menuVisible, setMenuVisible] = useState<boolean>(false)
   const [minPrice, setMinPrice] = useState<string>('')
   const [maxPrice, setMaxPrice] = useState<string>('')
   const [selectedLocation, setSelectedLocation] = useState<string>('')
 
-  const uniqueLocations = data ? [...new Set(sortLocations(data))] : []
+  const uniqueLocations = data?.length ? [...new Set(sortLocations(data))] : []
 
   const handleContactsToggle = () => {
     setMenuVisible((prev) => !prev)
@@ -125,7 +125,14 @@ export const Filter: FC<Props> = ({ data, setItems, setLoading, setError }) => {
 
       {menuVisible && (
         <div className={style.dropDown}>
-          {uniqueLocations.map((location, index) => {
+          {uniqueLocations.length === 0 && (
+            <div className={style.dropDownItem}>
+              <span className={style.dropDownItemText}>
+                Пока нет предложений...
+              </span>
+            </div>
+          )}
+          {uniqueLocations?.map((location, index) => {
             return (
               <div
                 onClick={() => handleSelectLocation(location)}

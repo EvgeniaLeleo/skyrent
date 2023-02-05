@@ -99,7 +99,7 @@
 .dropDownItemText {
   word-break: break-all;
 
-  padding: 16px 19px;
+  padding: 17px 19px;
 }
 
 .inputsWrapper {
@@ -119,7 +119,7 @@
   opacity: 0.75;
 
   width: 46%;
-  padding: 18px;
+  padding: 17px;
   box-sizing: border-box;
 
   border: 1px solid #d9d9d9;
