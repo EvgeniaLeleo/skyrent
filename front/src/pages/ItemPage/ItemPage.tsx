@@ -8,13 +8,13 @@ import { Footer } from '../../components/Footer/Footer'
 import { Button } from '../../components/Button/Button'
 import { NavBack } from '../../components/NavBack/NavBack'
 import { ItemContacts } from '../../components/ItemContacts/ItemContacts'
+import { ItemPageSkeleton } from '../../components/ItemPageSkeleton/ItemPageSkeleton'
 import { URL_API } from '../../constants'
 import { Item } from '../../types'
 
 import style from './style.module.css'
 import on from './../../assets/on.svg'
 import off from './../../assets/off.svg'
-import { ItemPageSkeleton } from '../ItemPageSkeleton/ItemPageSkeleton'
 
 export const ItemPage = () => {
   const itemPk = useParams()?.pk || ''

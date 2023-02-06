@@ -7,10 +7,11 @@ import { ItemCard } from '../../components/ItemCard/ItemCard'
 import { Footer } from '../../components/Footer/Footer'
 import { Filter } from '../../components/Filter/Filter'
 import { ArrowUp } from '../../components/ArrowUp/ArrowUp'
+import { ItemCardSkeleton } from '../../components/ItemCardSkeleton/ItemCardSkeleton'
 import { PageWrapper } from '../PageWrapper/PageWrapper'
 import { ROUTES } from '../../routes'
 import { Item } from '../../types'
-import { URL_API } from '../../constants'
+import { NUMBER_OF_SKELETONS, URL_API } from '../../constants'
 
 import style from './style.module.css'
 import logo from './../../assets/logo.svg'
@@ -125,7 +126,10 @@ export const MainPage = () => {
 
         {filterVisible && <Filter {...filterProps} />}
 
-        {loading && <p className={style.message}>Загрузка данных...</p>}
+        {loading &&
+          [...Array(NUMBER_OF_SKELETONS).keys()].map((item, index) => (
+            <ItemCardSkeleton key={index.toString()} />
+          ))}
 
         {!loading && error && (
           <p className={style.message}>
