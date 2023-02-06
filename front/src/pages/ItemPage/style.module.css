@@ -10,10 +10,7 @@
   margin-bottom: 17px;
 }
 
-.description,
-.descriptionHidden {
-  position: relative;
-
+.description {
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -25,24 +22,6 @@
 
   margin: 0;
   margin-bottom: 28px;
-}
-
-.descriptionHidden {
-  display: -webkit-inline-box;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-
-  overflow: hidden;
-}
-
-.showMore {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-
-  background-color: #ffffff;
 }
 
 .showMoreText {

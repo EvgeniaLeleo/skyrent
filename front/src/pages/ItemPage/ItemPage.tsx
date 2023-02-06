@@ -9,7 +9,7 @@ import { Button } from '../../components/Button/Button'
 import { NavBack } from '../../components/NavBack/NavBack'
 import { ItemContacts } from '../../components/ItemContacts/ItemContacts'
 import { ItemPageSkeleton } from '../../components/ItemPageSkeleton/ItemPageSkeleton'
-import { URL_API } from '../../constants'
+import { LENGTH_OF_DESCRIPTION, URL_API } from '../../constants'
 import { Item } from '../../types'
 
 import style from './style.module.css'
@@ -70,6 +70,7 @@ export const ItemPage = () => {
   }
 
   const { country, city, description, price } = item
+  const isShortDescription = description.length < LENGTH_OF_DESCRIPTION
 
   const handleDescriptionToggle = () => {
     setShowMore((prev) => !prev)
@@ -87,13 +88,17 @@ export const ItemPage = () => {
         {country} → {city}
       </h3>
       <p className={style.price}>$ {price} / month</p>
-      <p className={showMore ? style.description : style.descriptionHidden}>
-        {description}
-        {!showMore && (
-          <span className={style.showMore} onClick={handleDescriptionToggle}>
-            <span className={style.ellipsis}>... </span>
-            <span className={style.showMoreText}>more</span>
-          </span>
+      <p className={style.description}>
+        {isShortDescription && description}
+        {!isShortDescription && showMore && description}
+        {!isShortDescription && !showMore && (
+          <>
+            <span>{description.slice(0, LENGTH_OF_DESCRIPTION)}</span>
+            <span className={style.showMore} onClick={handleDescriptionToggle}>
+              <span className={style.ellipsis}>... </span>
+              <span className={style.showMoreText}>more</span>
+            </span>
+          </>
         )}
       </p>
 
