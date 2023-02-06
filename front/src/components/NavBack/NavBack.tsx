@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../routes'
 
 import style from './style.module.css'
-import logo from './../../assets/logo.svg'
+import logo from './../../assets/logoBig.svg'
 import backButton from './../../assets/back.svg'
 
 export const NavBack = () => {
@@ -27,7 +27,7 @@ export const NavBack = () => {
           className={style.logo}
           src={logo}
           alt="skyrent-logo"
-          height="27px"
+          height="29px"
         />
       </Link>
     </nav>
