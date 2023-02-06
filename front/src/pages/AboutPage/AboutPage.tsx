@@ -63,7 +63,7 @@ export const AboutPage = () => {
             className={style.collaboratorIcon}
             width="17px"
           />
-          QA-engineer&nbsp;
+          QA&nbsp;
           <a
             href="https://github.com/Taygib"
             target="_blank"
