@@ -1,0 +1,63 @@
+.location {
+  font-size: 26px;
+  line-height: 1.15;
+
+  width: 70%;
+  margin: 0;
+  margin-bottom: 17px;
+}
+
+.price {
+  font-size: 18px;
+  line-height: 0.94;
+
+  width: 50%;
+  margin: 0;
+  margin-bottom: 21px;
+}
+
+.description {
+  margin: 0;
+  margin-bottom: 28px;
+}
+
+.img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+
+  margin-bottom: 40px;
+}
+
+.featuresTitle {
+  font-size: 22px;
+  line-height: 1.18;
+
+  width: 50%;
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+.featuresOnList {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+  margin-bottom: 27px;
+}
+
+.featureOnItem {
+  width: 30%;
+  margin-bottom: 10px;
+}
+
+.featureOnItem:last-child {
+  margin-bottom: 0;
+}
+
+.button {
+  height: 50px;
+  margin-bottom: 57px;
+}

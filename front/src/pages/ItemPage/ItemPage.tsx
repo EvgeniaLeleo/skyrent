@@ -14,6 +14,7 @@ import { Item } from '../../types'
 import style from './style.module.css'
 import on from './../../assets/on.svg'
 import off from './../../assets/off.svg'
+import { ItemPageSkeleton } from '../ItemPageSkeleton/ItemPageSkeleton'
 
 export const ItemPage = () => {
   const itemPk = useParams()?.pk || ''
@@ -42,7 +43,8 @@ export const ItemPage = () => {
     return (
       <PageWrapper>
         <NavBack />
-        <p className={style.message}>Загрузка данных...</p>
+        <ItemPageSkeleton />
+        <Footer />
       </PageWrapper>
     )
   }
