@@ -1,0 +1,37 @@
+.arrowWrapper {
+  position: sticky;
+  z-index: 1;
+  bottom: 50px;
+  height: 0;
+}
+
+.arrowBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  aspect-ratio: 1/1;
+  margin-left: auto;
+  margin-right: 10px;
+  box-sizing: border-box;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 3px 12px 1px rgba(0, 0, 0, 0.15);
+
+  cursor: pointer;
+}
+
+.arrow {
+  width: 20px;
+
+  opacity: 30%;
+  transform: rotate(90deg);
+
+  transition: all 0.15s ease-out;
+}
+
+.arrow:hover {
+  transform: rotate(90deg) scale(1.1);
+}

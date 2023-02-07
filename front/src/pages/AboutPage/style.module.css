@@ -1,0 +1,82 @@
+.description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+
+  color: #000000;
+
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.description:nth-of-type(1) {
+  padding-top: 8px;
+}
+
+.description:nth-of-type(2) {
+  margin-bottom: 16px;
+}
+
+.collaboratorsTitle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.18;
+
+  color: #000000;
+
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+.collaboratorsList {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+  margin-bottom: 45px;
+}
+
+.collaborator {
+  display: flex;
+  align-items: center;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.44;
+
+  color: #000000;
+
+  margin-bottom: 17px;
+
+  opacity: 0.75;
+}
+
+.collaborator:last-child {
+  margin-bottom: 0;
+}
+
+.collaboratorIcon {
+  color: #000000;
+
+  margin-right: 0.5em;
+}
+
+.collaboratorLink,
+.collaboratorLink:active {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+
+  color: #000000;
+  text-decoration: none;
+
+  transition: color 0.15s;
+}
+
+.collaboratorLink:hover {
+  color: #727883;
+}

@@ -1,0 +1,42 @@
+.itemCard {
+  cursor: pointer;
+
+  margin-bottom: 42px;
+}
+
+.location {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 0.94;
+
+  color: #000000;
+
+  margin: 0;
+  margin-bottom: 22px;
+}
+
+.description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.44;
+
+  color: #000000;
+
+  opacity: 0.5;
+
+  margin: 0;
+  margin-bottom: 19px;
+}
+
+.price {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 0.94;
+
+  color: #000000;
+
+  margin: 0;
+}

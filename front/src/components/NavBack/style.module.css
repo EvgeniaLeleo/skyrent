@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 37px;
+}
+
+.backButton {
+  margin-right: 24px;
+
+  cursor: pointer;
+}
+
+.navLinkLogo {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer;
+}

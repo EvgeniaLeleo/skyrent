@@ -1,0 +1,18 @@
+.logoBottom {
+  margin-right: auto;
+  margin-bottom: 12px;
+
+  cursor: pointer;
+}
+
+.year {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 0.94;
+
+  opacity: 0.25;
+
+  margin: 0;
+  margin-bottom: 40px;
+}

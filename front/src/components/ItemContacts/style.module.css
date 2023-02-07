@@ -1,0 +1,37 @@
+.contactsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 22px 19px 24px;
+  margin-bottom: 38px;
+  box-sizing: border-box;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+
+.contactsTitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.44;
+
+  color: #000000;
+
+  margin: 0;
+  margin-bottom: 5px;
+
+  opacity: 0.5;
+}
+
+.contactsDetails {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.15;
+
+  color: #000000;
+
+  margin: 0;
+}

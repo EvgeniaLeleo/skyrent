@@ -1,0 +1,39 @@
+.button {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1;
+
+  color: #000000;
+
+  text-align: center;
+
+  min-height: 40px;
+  width: 100%;
+  padding: 16px 26px;
+
+  background-color: #d9d9d9;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.button:hover {
+  background-color: #c5c2c2;
+}
+
+.button:active {
+  background-color: #b7b5b5;
+}
+
+.disabled,
+.disabled:hover,
+.disabled:active {
+  background-color: #b7b5b5;
+  transform: none;
+  cursor: default;
+}
