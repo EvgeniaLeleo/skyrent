@@ -12,9 +12,9 @@ import arrowDown from './../../assets/arrowDown.svg'
 
 type Props = {
   data?: Item[]
-  setItems: Function
-  setLoading: Function
-  setError: Function
+  setItems: React.Dispatch<React.SetStateAction<Item[]>>
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setError: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const Filter: FC<Props> = ({ data, setItems, setError, setLoading }) => {
