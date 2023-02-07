@@ -14,7 +14,6 @@ Skyrent — MVP сервис доски объявлений по длитель
 
 ```sh
 cd skyrent
-cd front
 npm install
 ```
 
