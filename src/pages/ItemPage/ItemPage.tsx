@@ -60,7 +60,7 @@ export const ItemPage = () => {
     )
   }
 
-  if (!item) {
+  if (!item?.pk) {
     return (
       <PageWrapper>
         <NavBack />
